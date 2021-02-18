@@ -1,0 +1,43 @@
+<view class="swiper-tab">
+    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">收入</view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">支出</view>
+  </view>
+
+<view class = "{{currentTab == 0 ? 'show':'hidden'}}" >
+    <scroll-view>
+<view class='activity'>
+  <text>总收入：</text>
+  <text style="margin-left:200px">{{money}}</text>
+</view>
+
+  <view wx:for="{{income}}" class="activity">
+    <text bindlongtap="delete" data-index="{{index}}" style="margin-right:40px">{{item.incDate}}</text>
+    <text style="margin-right:40px">{{item.incType}}</text>
+    <text style="margin-right:40px">{{item.incMoney}}</text>
+    <!--<text>{{item.incNote}}</text>-->
+  </view>
+    </scroll-view>
+  </view>
+
+  <view class = "{{currentTab == 1 ? 'show':'hidden'}}" >
+    <scroll-view>
+    <view class='activity'>
+    <text>总支出：</text>
+    <text style="margin-left:200px">{{out}}</text>
+    </view>
+
+    <view wx:for="{{outcome}}" class="activity">
+    <text style="margin-right:40px" bindlongtap="delete" data-index="{{index}}">{{item.expDate}}</text>
+    <text style="margin-right:40px">{{item.expType}}</text>
+    <text style="margin-right:40px">{{item.expMoney}}</text>
+    <!--<text>{{item.expNote}}</text>-->
+  </view>
+
+    </scroll-view>
+  </view>
+
+  <view class="round-click">
+  <navigator url='/pages/addpay/addpay'>
+  <image style="width:50px;height:50px" src="img/plus.png"></image>
+  </navigator>
+</view>

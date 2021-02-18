@@ -1,0 +1,66 @@
+
+.container{
+  height: 1500rpx;
+}
+
+.container{
+  padding: 0;
+  font-size: 14rpx;
+  background: #F0F4F3;
+  color: #000;
+}
+
+.diary-source{
+  margin-top: 10px;
+  display: flex;
+  flex-direction:row;
+
+
+}
+
+.diary-item{
+  margin-top: 10px;
+  height: 130px;
+  box-shadow: 0px 2px 2px 2px rgb(216, 216, 216);
+  border: 2px solid rgba(184, 224, 235, 0.116);
+  background-color: rgba(184, 224, 235, 0.062);
+
+}
+
+.info{
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal 
+  !important;-webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  font-size:15px;
+  width:250px;
+  height:80px
+}
+
+.img{
+  display: flex;
+  flex-direction:column;
+}
+
+.round-click{
+    height: 120rpx;
+    width: 120rpx;
+    background-color: #73cbee;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 50rpx;
+    right: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+}
+.round-click navigator{
+    font-size: 40rpx;
+    max-width: 80rpx;
+    color: #fff;
+    text-align: center;
+}

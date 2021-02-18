@@ -1,0 +1,104 @@
+/* 日历 */
+.calendar{
+  width: 100%;
+  margin-top: 40rpx;
+  background: rgb(255, 255, 255);
+  border-bottom-right-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+  padding: 0 0 20rpx;
+  font-family: FZZhunYuan-M02S;
+}
+
+.header{
+  font-size: 0;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.header>view{
+  display: inline-block;
+  width: 14.285%;
+  color: #666;
+  font-size: 30rpx;
+  text-align: center;
+  border-bottom: 1px solid #D0D0D0;
+  padding: 20rpx 0;
+}
+
+.weekMark{
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.weekMark view{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 2px solid #69f;
+}
+
+.date-box{
+  font-size: 0;
+  padding: 10rpx 0;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.date-box>view{
+  position: relative;
+  display: inline-block;
+  width: 14.285%;
+  color: #666;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.date-head{
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 12pt;
+}
+
+.nowDay .date-head{
+  width: 60rpx;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  background-color: #73cbee;
+  margin: 0 auto;
+}
+
+.activity{
+  margin: 20rpx;
+  padding: 30rpx;
+  display: flex;
+  text-align: left;
+  border-radius: 0px;
+  flex-direction: column;
+  justify-content: left;
+  background-color: #73cbee7e;
+  align-items: left;
+}
+
+.round-click{
+    height: 120rpx;
+    width: 120rpx;
+    background-color: #73cbee;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 50rpx;
+    right: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+}
+.round-click navigator{
+    font-size: 40rpx;
+    max-width: 80rpx;
+    color: #fff;
+    text-align: center;
+}
+

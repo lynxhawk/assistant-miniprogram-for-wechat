@@ -1,0 +1,22 @@
+
+<view>
+
+  <view class="activity">类型：<input value="" bindinput="inputtype"></input></view>
+
+  <view class="activity">金额：<input value="" bindinput="inputmoney"></input></view>
+
+  <view class="activity">开始时间：
+<picker mode="date" value="date" start="2019-01-01" end="2022-01-01" bindchange="bindChange">
+    <input value='{{date}}' placeholder='选择时间'/>
+  </picker>
+</view>
+
+<view class="activity">利率：<input value="" bindinput="inputrate"></input></view>
+
+<view style="position:fixed;bottom:0">
+<view class="activity">
+<button class="submitbtn" bindtap="submit" >提交</button>
+</view>
+</view>
+
+</view>

@@ -1,0 +1,110 @@
+<view>
+    <view class="page-bottom"> 
+        <view class="page-content">
+            <view  class="wc">
+                <navigator url="../index/index" hover-class="navigator-hover">
+                <image src="img/home.png" style="width:20px ; height:20px"></image>
+                主页</navigator>
+            </view>
+            <view  class="wc">
+                <navigator url="../calendar/calendar" hover-class="navigator-hover">
+                 <image src="img/calendar-alt.png" style="width:20px ; height:20px"></image>
+                 日程安排</navigator>
+            </view>
+            <view  class="wc">
+                <navigator url="../diary/diary" hover-class="navigator-hover">
+                 <image src="img/diary.png" style="width:20px ; height:20px"></image>
+                 日记</navigator>
+            </view>
+            <view  class="wc">
+                <navigator url="../pay/pay" hover-class="navigator-hover">
+                <image src="img/feather.png" style="width:20px ; height:20px"></image>
+                收支记账</navigator>
+            </view>
+            <view  class="wc">
+                <navigator url="../money/money" hover-class="navigator-hover">
+                <image src="img/chart-areaspline.png" style="width:20px ; height:20px"></image>
+                投资分析</navigator>
+            </view>
+            <view  class="wc">
+                <navigator url="../setting/setting" hover-class="navigator-hover">
+                <image src="img/settings.png" style="width:30px ; height:30px"></image>
+                设置</navigator>
+            </view>
+        </view>
+    </view>
+
+
+    <scroll-view scroll-y="true" style="height:700px" bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start"  class="page-top {{open ? 'c-state1' : ''}}">
+
+    <loading hidden="{{loadingStatus}}">
+    加载中...
+</loading>
+<view wx:if="{{userLocation == 3}}" class="box weather_bg list_left">
+  <text class='tips' bindtap='refreshCurrentPage'>
+  定位异常，无法正确获取您的定位信息\n
+  1.请重新刷新页面\n
+  2.尝试换个地方重新刷新页面\n
+  3.晚些时候再刷新页面\n
+  4.非中国境内，无法正确获取\n
+  </text>
+</view>
+<view wx:if="{{userLocation == 2}}" class="box city_title list_center">
+  <text class='tips' bindtap='refreshCurrentPage'>
+  没有授权获取定位信息，功能无法使用\n
+  确认授权后，请下拉或者点击文字刷新获取数据
+  </text>
+  <button class='btn' bindtap='gotoAuthPage'>点击开启授权</button>
+</view>
+<view wx:elif="{{userLocation == 1}}">
+  
+
+  <view style="margin-left:10px;margin-top:40px;display: flex;flex-direction: raw;">天气情况
+  <view style="margin-left:50px">{{cityInfo.addressComponent.city}}</view>
+  </view>
+
+  <view class="box weather_info">
+    <view class='f_red'>{{weatherInfo.date}}</view>
+    <view>
+      <text class='f_black'>{{weatherInfo.weatherDesc}}</text>
+      <text class='ml20'>{{weatherInfo.temperature}}</text>
+      <text class='ml20'>{{weatherInfo.wind}}</text>
+    </view>
+    <view>PM2.5：{{weatherInfo.pm25}}</view>
+  </view>
+  
+</view>
+
+
+
+
+
+
+
+
+        <image bindtap="tap_ch" src="img/menu.png"></image>
+
+        <view style="margin-top:10px;margin-left:10px;margin-bottom:50px;">
+
+        <view class="activity">
+        <text>投资总收益</text>
+        <text style="margin-left:200px">{{sum}}</text> 
+        </view>
+         <view class="activity">
+        <text>投资总金额</text>
+        <text style="margin-left:200px">{{sumcount}}</text>
+        </view>
+         <view class="activity">
+        <text>总收入</text>
+        <text style="margin-left:250px">{{sumincome}}</text>
+        </view>
+         <view class="activity">
+        <text>总支出</text>
+        <text style="margin-left:250px">{{sumoutcome}}</text>
+        </view>
+
+      </view>
+      </scroll-view>
+    </view>
+    
+

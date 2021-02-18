@@ -1,0 +1,60 @@
+<view class="swiper-tab">
+    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">投资列表</view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">投资统计</view>
+  </view>
+
+<view class = "{{currentTab == 0 ? 'show':'hidden'}}" >
+    <scroll-view>
+
+  <view wx:for="{{invest}}" class="activity">
+    <view class="date">
+    <text bindlongtap="delete" data-index="{{index}}" style="margin-right:10px;font-size:20px">{{item.invStartDate}}</text>
+    </view>
+
+    <view class="date">
+    <text style="margin-right:10px">类型：{{item.invName}}</text>
+    <text style="margin-right:10px">金额：{{item.invMoney}}</text>
+    </view>
+
+    <view class="date">
+    <text>利率：{{item.invRate}}</text>
+    <text>收益：{{item.invProfitMoney}}</text>
+    </view>
+  </view>
+
+    </scroll-view>
+  </view>
+
+  <view class = "{{currentTab == 1 ? 'show':'hidden'}}" >
+    <scroll-view>
+    <view class='activity'>
+    <text style="margin-left:20px">总收益：</text>
+    <text style="margin-left:200px">{{sum}}</text>
+    </view>
+
+  <view class="container">
+  <view class="widget">
+    <text class="column">类型</text>
+    <text class="column">金额</text>
+    <text class="column">收益</text>
+  </view>
+  <scroll-view scroll-y="true">
+    <view>
+      <block wx:for="{{outcome}}">
+        <view class="widget">
+            <text class="column">{{item.invName}}</text>
+            <text class="column">{{item.invMoneyCount}}</text>
+            <text class="column">{{item.invPfmoneyCount}}</text>
+        </view>       
+      </block>
+    </view>
+  </scroll-view>
+</view>
+    </scroll-view>
+  </view>
+
+  <view class="round-click">
+  <navigator url='/pages/addmoney/addmoney'>
+  <image style="width:50px;height:50px" src="img/plus.png"></image>
+  </navigator>
+</view>
