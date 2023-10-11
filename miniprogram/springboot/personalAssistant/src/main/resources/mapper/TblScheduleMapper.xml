@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.TblScheduleMapper">
+    <select id="querySchedule" resultType="com.example.demo.entity.TblSchedule">
+        SELECT *
+        FROM tbl_schedule
+        WHERE user_id=#{userId}
+    </select>
+    <select id="queryScheduleById" resultType="com.example.demo.entity.TblSchedule">
+        SELECT *
+        FROM tbl_schedule
+        WHERE sc_id=#{scId}
+    </select>
+    <insert id="insertSchedule" useGeneratedKeys="true" keyProperty="scId"
+            keyColumn="sc_id" parameterType="com.example.demo.entity.TblSchedule">
+        INSERT INTO
+        tbl_schedule(sc_name,sc_start_time,sc_end_time,sc_repeat_type,sc_start_date,sc_end_date,sc_repeat_times,sc_remind_days,user_id)
+        VALUES
+        (#{scName},#{scStartTime},#{scEndTime},#{scRepeatType},#{scStartDate},#{scEndDate},#{scRepeatTimes},#{scRemindDays},#{userId})
+    </insert>
+    <update id="updateSchedule" parameterType="com.example.demo.entity.TblSchedule">
+        UPDATE tbl_schedule
+        <set>
+            <if test="scName!=null">sc_name=#{scName},</if>
+            <if test="scStartTime!=null">sc_start_time=#{scStartTime},</if>
+            <if test="scEndTime!=null">sc_end_time=#{scEndTime},</if>
+            <if test="scRepeatType!=null">sc_repeat_type=#{scRepeatType},</if>
+            <if test="scRepeatTimes!=null">sc_repeat_times=#{scRepeatTimes},</if>
+            <if test="scEndDate!=null">sc_end_date=#{scEndDate},</if>
+            <if test="scRemindDays!=null">sc_remind_days=#{scRemindDays},</if>
+        </set>
+        WHERE sc_id=#{scId}
+    </update>
+    <delete id="deleteSchedule">
+        DELETE FROM
+        tbl_schedule
+        WHERE
+        sc_id=
+        #{scId}
+    </delete>
+</mapper>

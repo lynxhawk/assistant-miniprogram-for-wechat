@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.TblExpensesMapper">
+    <select id="queryExpenses" resultType="com.example.demo.entity.TblExpenses">
+        SELECT *
+        FROM tbl_Expenses
+        WHERE user_id=#{userId}
+    </select>
+    <select id="queryExpensesById" resultType="com.example.demo.entity.TblExpenses">
+        SELECT *
+        FROM tbl_Expenses
+        WHERE exp_id=#{expId}
+    </select>
+    <insert id="insertExpenses" useGeneratedKeys="true" keyProperty="userId"
+            keyColumn="user_id" parameterType="com.example.demo.entity.TblExpenses">
+        INSERT INTO
+        tbl_Expenses(exp_money,exp_type,exp_name,exp_date,user_id)
+        VALUES
+        (#{expMoney},#{expType},#{expName},#{expDate},#{userId})
+        <set>
+            <if test="expNote!=null">exp_note=#{expNote},</if>
+        </set>
+    </insert>
+
+    <delete id="deleteExpenses">
+        DELETE FROM
+        tbl_Expenses
+        WHERE
+        exp_id=
+        #{expId}
+    </delete>
+</mapper>

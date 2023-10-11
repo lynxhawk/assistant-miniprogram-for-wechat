@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.TblUserMapper">
+    <select id="queryUserById" resultType="com.example.demo.entity.TblUser">
+        SELECT *
+        FROM tbl_user
+        WHERE user_id=#{userId}
+    </select>
+    <select id="queryUserByName" resultType="com.example.demo.entity.TblUser">
+        SELECT *
+        FROM tbl_user
+        WHERE user_name=#{userName}
+    </select>
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId"
+            keyColumn="user_id" parameterType="com.example.demo.entity.TblUser">
+        INSERT INTO
+        tbl_user(user_name)
+        VALUES
+        (#{userName})
+    </insert>
+    <update id="updateUser" parameterType="com.example.demo.entity.TblUser">
+        UPDATE tbl_user
+        <set>
+            <if test="userName!=null">user_name=#{userName},</if>
+            <if test="expCount!=null">exp_count=#{expCount},</if>
+            <if test="incCount!=null">inc_count=#{incCount},</if>
+            <if test="invCount!=null">inv_count=#{invCount},</if>
+            <if test="invPfcount!=null">inv_pfcount=#{invPfcount},</if>
+        </set>
+        WHERE user_id=#{userId}
+    </update>
+    <delete id="deleteUser">
+        DELETE FROM
+        tbl_user
+        WHERE
+        user_id=
+        #{userId}
+    </delete>
+
+</mapper>

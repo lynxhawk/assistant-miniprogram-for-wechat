@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.TblInvestmentMapper">
+    <select id="queryInvestment" resultType="com.example.demo.entity.TblInvestment">
+        SELECT *
+        FROM tbl_investment
+        WHERE user_id=#{userId}
+    </select>
+    <select id="queryInvestmentGroupByName" resultType="com.example.demo.entity.TblInvtype">
+        SELECT  inv_name,sum(inv_money) as inv_money_count,sum(inv_profit_money) as inv_pfmoney_count,user_id
+        FROM tbl_investment
+        WHERE user_id = #{userId}
+        GROUP BY inv_name
+    </select>
+    <select id="queryInvestmentById" resultType="com.example.demo.entity.TblInvestment">
+        SELECT *
+        FROM tbl_investment
+        WHERE inv_id=#{invId}
+    </select>
+    <insert id="insertInvestment" useGeneratedKeys="true" keyProperty="invId"
+            keyColumn="inv_id" parameterType="com.example.demo.entity.TblInvestment">
+        INSERT INTO
+        tbl_investment(inv_name,inv_money,inv_profit_money,inv_rate,inv_start_date,user_id)
+        VALUES
+        (#{invName},#{invMoney},#{invProfitMoney},#{invRate},#{invStartDate},#{userId})
+    </insert>
+    <update id="updateInvestment" parameterType="com.example.demo.entity.TblInvestment">
+        UPDATE tbl_investment
+        <set>
+            <if test="invProfitMoney!=null">inv_profit_money=#{invProfitMoney},</if>
+            <if test="invRate!=null">inv_rate=#{invRate},</if>
+            <if test="invEndDate!=null">inv_end_date=#{invEndDate},</if>
+        </set>
+        WHERE inv_id=#{invId}
+    </update>
+    <delete id="deleteInvestment">
+        DELETE FROM
+        tbl_investment
+        WHERE
+        inv_id=
+        #{invId}
+    </delete>
+</mapper>
