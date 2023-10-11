@@ -1,8 +1,0 @@
-<button type="default" style="width:60px;margin-top:10px;margin-left:0px" open-type="share"><image style="width:40px;height:40px;" src="img/share-alt.png"></image></button>
-  <view class="title"><text>{{title}}</text></view>
-  <view class="date"><text>{{date}}</text></view>
-
-  <view class="article"><text>{{txt}}</text></view>
-  <view class="img"><image src="{{img}}"></image></view>
-  <view class="location"><text>{{location}}</text></view>
-
